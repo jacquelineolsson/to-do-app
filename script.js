@@ -12,10 +12,10 @@ let completedCount =0;
 let todoID = 0;
 const todoArray = [];
 
-
+// function to change the completed status of a todo item in the array
 function changeStatus(id) {
     const todoItem = todoArray.find(x => x.id === id);
-    if (todoItem) todoItem.completed = !todoItem.completed;
+    if (todoItem) todoItem.completed = !todoItem.completed; 
 }
 
 addBtn.addEventListener(
@@ -30,7 +30,7 @@ input.addEventListener("keypress", // listen for Enter key press to add todo ite
     });
 
 
-
+// function to add a todo item to the list
 function addTodoItem(){
 
 const text = input.value;
@@ -53,11 +53,11 @@ todoArray.push(todoObject);
 console.log(todoArray);
 todoID++;
 
-
-const todoItem = document.createElement("li");
+// create a new list item and add it to the todo list
+const todoItem = document.createElement("li"); 
 todoList.appendChild(todoItem);
 
-const itemLabel = document.createElement("span");
+const itemLabel = document.createElement("span"); 
 itemLabel.innerText = text;
 todoItem.appendChild(itemLabel);
 
@@ -81,7 +81,25 @@ function(){
     changeStatus(todoObject.id); // update the completed status in the array
 }   
 
+
 );
+// creat a trashcan to the list
+const trash = document.createElement("span"); 
+trash.innerHTML = "&#x1F5D1";
+todoItem.appendChild(trash); 
+
+trash.addEventListener(
+    "click",
+    function(){
+        
+        todoItem.remove();
+
+    const index = todoArray.findIndex(item => item.id === todoObject.id);
+        if (index !== -1) {
+            todoArray.splice(index, 1); }
+            console.log(todoArray);
+    
+ });
 
 
 input.value = "";

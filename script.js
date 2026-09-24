@@ -1,18 +1,33 @@
 
 
 // declare variables
+
 const addBtn = document.querySelector("#addBtn");
 const todoList = document.querySelector("ul");
 const input = document.querySelector("#todo-input");
 const infoText = document.querySelector("#infoText");
 const countTodos = document.querySelector("#countTodos");
-let completedCount =0;
 
+let completedCount =0;
+let todoID = 0;
+const todoArray = [];
+
+
+function changeStatus(id) {
+    const todoItem = todoArray.find(x => x.id === id);
+    if (todoItem) todoItem.completed = !todoItem.completed;
+}
 
 addBtn.addEventListener(
     "click",
     addTodoItem
 );
+input.addEventListener("keypress", // listen for Enter key press to add todo item
+    function(event) {
+        if(event.key === "Enter") {
+            addTodoItem();
+       }
+    });
 
 
 
@@ -27,6 +42,17 @@ if(text.length === 0){
    infoText.innerText = "Please enter a task to add";
    return;
 }
+
+//  create todo object and add it to the array
+const todoObject = {};
+todoObject.id = todoID;
+todoObject.name = text;
+todoObject.completed = false;
+
+todoArray.push(todoObject);
+console.log(todoArray);
+todoID++;
+
 
 const todoItem = document.createElement("li");
 todoList.appendChild(todoItem);
@@ -49,9 +75,11 @@ function(){
     {
         todoItem.setAttribute("class", "completed");  // add completed class
         completedCount++;
+        
     }
     countTodos.innerText = `${completedCount} completed`;
-}    
+    changeStatus(todoObject.id); // update the completed status in the array
+}   
 
 );
 

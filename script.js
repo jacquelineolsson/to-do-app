@@ -22,7 +22,8 @@ addBtn.addEventListener(
     "click",
     addTodoItem
 );
-input.addEventListener("keypress", // listen for Enter key press to add todo item
+// listen for Enter key press to add todo item
+input.addEventListener("keypress",
     function(event) {
         if(event.key === "Enter") {
             addTodoItem();
@@ -79,21 +80,27 @@ function(){
     }
     countTodos.innerText = `${completedCount} completed`;
     changeStatus(todoObject.id); // update the completed status in the array
-}   
+    console.log(todoArray);
+}
 
 
 );
-// creat a trashcan to the list
+// create a trashcan to the list
 const trash = document.createElement("span"); 
 trash.innerHTML = "&#x1F5D1";
+trash.classList.add("trashcan");
 todoItem.appendChild(trash); 
 
 trash.addEventListener(
     "click",
     function(){
+        if (todoObject.completed) {   //If todo was done when deleted, change completed
+            completedCount--;
+            countTodos.innerText = `${completedCount} completed`;
+        } 
         
         todoItem.remove();
-
+// find the index of the todo item to remove from the array
     const index = todoArray.findIndex(item => item.id === todoObject.id);
         if (index !== -1) {
             todoArray.splice(index, 1); }

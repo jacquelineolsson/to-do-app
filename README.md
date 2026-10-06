@@ -1,2 +1,2 @@
 # to-do-app
-This is a To Do List build with Javascript
+This is a To Do List build with Javascript, html and CSS

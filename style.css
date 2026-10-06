@@ -1,56 +1,70 @@
 
 
-@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
 
+*{
+    box-sizing: border-box;
+    text-align: center;
+}
 
 
 h1 {
-    font-family: "Creepster", cursive;
-    color: #ff6600;
-    text-shadow: 0 0 10px #ff3300, 0 0 20px #800080;
-    letter-spacing: 2px;
-    font-size: 7rem;
-    font-weight: 700;
+   font-size: 3rem;
+   animation: fadeIn 3s;
 }
 
+div {
+    background-color: #ffffff;
+}
 
 body {
- 
-    background: linear-gradient(to bottom, #0e0b16 0%, #3a0007 50%, #1a0003 100%);
-    color: #ffffff;
-    min-height: 100vh; 
+    background: linear-gradient(12deg, #f77272, #fadede);
+    background-repeat: no-repeat;
+    min-height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
-}
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
 
-
-.todo-container {
-    background-color: rgba(20, 20, 25, 0.085);
-    border: 2px solid#ff5e00;
-    border-radius: 12px;
-    max-width: 450px;
-    margin: 20px auto;
-    padding: 25px;
-    box-shadow: 0 0 20px rgba(255, 94, 0, 0.3);
-    text-align: center;
+.container {
+    background: #ffffff;
+    width: 480px;
+    max-width: 500px;
+    height: 20vh;
+    padding: 0px;
+    position:absolute;
+    animation: fadeIn 2s;
 }
 /* Color and pointer for the li list */
 li {
-    font-family: "Creepster", cursive;
-    font-size: 1.2rem;
-    color: #ffffff;
-    margin-bottom: 10px;
+    list-style-type: none;
+    font-size: 1.5rem;
+    color: black;
+    font-family: "Ariel", sans-serif;
+    margin: 5%;
     cursor: pointer;
+    position:relative;
+    animation: addTodo 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
+ul {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    padding: 5;
+    
+
+}
 .completed {
     text-decoration: line-through;
-    color:rgb(252, 117, 54)
+    color:rgb(10, 4, 1)
 }
 
 .trashcan {
     font-size: 1.5rem;
-    color: rgba(235, 64, 11, 0.973)
+    
 }
  /* no line-through over trash can */
 .completed .trashcan {
@@ -62,37 +76,6 @@ li {
     cursor: pointer;
 }
 
-input[type="text"] {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ff5e00;
-    background-color: #1a1a2e;
-    color: #ffffff;
-    outline: none;
-}
 
-button {
-    padding: 10px 15px;
-    border-radius: 6px;
-    border: none;
-    background-color: #ff5e00;
-    color: #ffffff;
-    font-weight: bold;
-    cursor: poinert;
-    transition: background 0.2s;
 
-}
-
-button:hover {
-    background-color: £e05200;
-}
-.bottom-image {
-    width: 70%;
-    max-width: 800px;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(255, 94, 0, 0.6);
-}
 

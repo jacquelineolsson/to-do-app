@@ -40,8 +40,15 @@ infoText.innerText = "";
 // check if input is empty
 if(text.length === 0){
 
-   infoText.innerText = "Please enter a task to add";
+   infoText.innerText = "Input must not be empty";
+   infoText.classList.add("alert");
+   setTimeout (() => {
+    infoText.classList.remove("alert")
+   }, 2000);
    return;
+}
+else {
+    infoText.innerText = "";
 }
 
 //  create todo object and add it to the array
@@ -87,7 +94,7 @@ function(){
 );
 // create a trashcan to the list
 const trash = document.createElement("span"); 
-trash.innerHTML = "&#x1F5D1";
+trash.innerHTML = '<img src="trash-bin.png" alt="Delete" width="18">';
 trash.classList.add("trashcan");
 todoItem.appendChild(trash); 
 

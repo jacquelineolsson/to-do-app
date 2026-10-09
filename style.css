@@ -8,8 +8,14 @@
 
 
 h1 {
-   font-size: 3rem;
-   animation: fadeIn 3s;
+    
+   font-size: 350%;
+   font-family: "Times New Roman", Times, Georgia, serif;
+   font-weight: bold;
+   color: #070707;
+   margin-top: 0;
+   margin-bottom: 2px;
+  
 }
 
 div {
@@ -17,54 +23,130 @@ div {
 }
 
 body {
-    background: linear-gradient(12deg, #f77272, #fadede);
+    background: linear-gradient(180deg, #fec0c1 0%, #fea7a7 50%, #ff8c8b 100%);
     background-repeat: no-repeat;
     min-height: 100vh;
-    margin: 0;
-    font-family: "Times New Roman", Times, serif;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex;                /* activates flexbox */
+    justify-content: center;      /* centers the container horizontally */
+    align-items: flex-start;      /* gets the container to the top of the page */
  }
 
 .container {
     background: #ffffff;
     width: 480px;
-    max-width: 500px;
-    height: 20vh;
-    padding: 0px;
-    position:absolute;
-    animation: fadeIn 2s;
+    padding: 15px 10px ;
+    margin: 2%;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+    animation: dropIn 1s ease-in-out;
+    transition: all 0.3s ease-in-out; 
+    position: relative;           /* make position relative for inner elements */
 }
-/* Color and pointer for the li list */
+/* styling and animation for the completed text that counts */
+p {
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-weight: 600;
+    color: #333333;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    animation: dropIn 1s ease-in-out;
+    
+}
+/* styling and animation for the todo list items */
 li {
     list-style-type: none;
     font-size: 1.5rem;
-    color: black;
-    font-family: "Ariel", sans-serif;
-    margin: 5%;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    color: #333333;
+    margin: 4px 0;
     cursor: pointer;
-    position:relative;
+    position: relative;            /* making trashcan (child elements) to relative position to items in list */
     animation: addTodo 0.5s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;        /* transition when list items change state or layout */
 }
 
 ul {
-    background-color: #ffffff;
-    border-color: #ffffff;
-    padding: 5;
-    
+    padding: 0;
+    margin: 13px 0 0 0;
+    display: flex;                /* flexbox layout for the list container */
+    flex-direction: column;       /* stacks items in todo list on top of each other in a vertical column */
+    align-items: center;          /* centers all items in list horizontally within list */
 
 }
+
+/* container to input and OK button side by side */
+.todo-input-Btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
+    gap: 8px;
+}
+
+/* styling and borders for the text input field */
+.todo-input-Btn input{
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: left;
+    padding: 2px 5px;
+    width: 240px;
+    border: 2px solid #333333;
+    border-radius: 5px;
+
+}
+
+/*blue button for adding todo */
+#todo-input:focus {
+    outline: none;
+    border-color: #1b529b;
+    box-shadow: 0 0 0 1px #d1ebff;
+}
+
+/* styling and layout for the add todo button */
+.todo-input-Btn button {
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 4px 10px;
+    background-color: linear-gradient(to right, #a4a4a4 0%, #a4a4a4 100%); /*background in button */
+    border: 2px solid #a4a4a4;                                               /*color for the edge of button */
+    color: #070707;                                                          /*text color in button */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.todo-input-Btn button:hover {
+    background-color: #e1e1e1;
+    border-color: #bebebe;
+}
+
+#infoText {
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-size: 0.9rem;
+    color: red;
+    font-weight: 600;
+    background-color: #ffffff;
+    font-style: italic;
+}
+
+.alert {
+    animation: alert 1.2s ease-in-out;
+}
+
 .completed {
     text-decoration: line-through;
-    color:rgb(10, 4, 1)
+    color: #888888;
 }
 
 .trashcan {
     font-size: 1.5rem;
-    
+    margin-left: 10px;
+    cursor: pointer;
+}
+/* make trashcan darker on hover */
+.trashcan:hover img {
+    filter: brightness(0);
 }
  /* no line-through over trash can */
 .completed .trashcan {
@@ -72,10 +154,69 @@ ul {
     display: inline-block;
 }
 
-.trashcan:hover {
-    cursor: pointer;
+
+
+@keyframes alert {   /* animation for alert message */
+    /*blink 1 */
+    0% {  
+        opacity: 0;
+        transform: scale(1.1); }
+    16% { 
+        opacity: 1;
+        transform: scale(1.1); }
+     /* Blink 2 */ 
+    33% {
+        opacity: 0;
+        transform: scale(1.1); }     
+    50% {
+        opacity:1;
+        transform: scale(1.1); }
+    /* Blink 3 */
+    66% {
+        opacity: 0;
+        transform: scale(1.1); }
+    83% {
+        opacity: 1;
+        transform: scale(1.1); }  
+    /* Last blink that stays*/      
+    100% {
+        opacity: 1;
+        transform: scale(1.1); }
 }
 
+@keyframes addTodo { /*animation for adding a new todo */
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 
+}
 
+@keyframes dropIn { /*animation for drop in effect */
+    0% {
+        color: rgb(255, 255, 255);                 /* start the drop */
+        opacity: 0;
+        top: -500px; 
+    }
+    60% {                                            /* going down */
+        color: rgb(255, 255, 255);         
+        opacity: 1;
+        top: 40px;
+    }
+    75% {                                            /* make the bounce */
+        color: rgb(255, 255, 255);
+        top: 40px;
+    }
+    90% {
+        top: 15px;
+    }
+    100% {                                          /* ending on the right place */
+        opacity: 1;
+        top: 0;
+    }
 
+}
